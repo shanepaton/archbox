@@ -39,10 +39,17 @@ sed -i 's/^#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' /etc/def
 os-prober
 grub-mkconfig -o /boot/grub/grub.cfg
 
+echo "[archbox]: Creating swap file..."
+dd if=/dev/zero of=/swapfile bs=1M count=8k status=progress
+chmod 0600 /swapfile
+mkswap -U clear /swapfile
+swapon /swapfile
+echo "\n/swapfile none swap defaults 0 0" >> /etc/fstab
+
 echo "[archbox]: Setting root password..."
 yes $UACRPW | passwd
 
-echo "[archbox]:  On restart enable iwd.service and dhcpcd.service!"
+echo "[archbox]: On restart enable iwd.service and dhcpcd.service!"
 
 echo "[archbox]: Arch Linux install complete."
 echo "[archbox]: See ya on the flip side..."
