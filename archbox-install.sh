@@ -19,6 +19,15 @@ echo "[archbox]: Enter WiFi network name (ex. Epic-WiFi):"
 read NETNAME
 echo "[archbox]: Enter WiFi network password (ex. V3RYS3CUR3PW):"
 read NETPW
+echo "[archbox]: Enter system hostname:"
+read HOSTNAME
+echo "[archbox]: Enter root password:"
+read UACRPW
+echo "[archbox]: Enter username:"
+read UACNAME
+echo "[archbox]: Enter password:"
+read UACPW
+
 
 echo "[archbox]: Configuring WiFi..."
 iwctl --passphrase ${NETPW} station ${NETDEV} connect ${NETNAME}
@@ -45,15 +54,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "[archbox]: Inital setup complete, chroot and execute archbox-chroot.sh to finalize setup. See ya on the flip side..."
 
 arch-chroot /mnt /bin/bash <<"EOT"
-
-echo "[archbox]: Enter system hostname:"
-read HOSTNAME
-echo "[archbox]: Enter root password:"
-read UACRPW
-echo "[archbox]: Enter username:"
-read UACNAME
-echo "[archbox]: Enter password:"
-read UACPW
 
 echo "[archbox]: Setting timezone..."
 ln -sf /usr/share/zoneinfo/America/Regina /etc/localtime
