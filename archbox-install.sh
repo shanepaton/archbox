@@ -64,14 +64,14 @@ locale-gen
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 
 echo "[archbox]: Setting Hostname..."
-echo $HOSTNAME > /etc/hostname 
+echo {$HOSTNAME} > /etc/hostname 
 
 echo "[archbox]: Installing packages..."
 pacman -S --noconfirm --needed grub efibootmgr dhcpcd iwd nano vi vim sudo neofetch cmatrix htop ntp zsh git os-prober
 
 echo "[archbox]: Creating main user..."
-useradd -m -g wheel $UACNAME
-yes $UACPW | passwd $UACNAME
+useradd -m -g wheel {$UACNAME}
+yes {$UACPW}| passwd {$UACNAME}
 
 echo "[archbox]: Configuring up GRUB..."
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
