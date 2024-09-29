@@ -41,6 +41,5 @@ pacstrap -K /mnt base linux linux-firmware --noconfirm --needed
 echo "[archbox]: Generating fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cp /archbox-b-chroot.sh /mnt/archbox-b-chroot.sh
-cp /archbox-c-chroot.sh /mnt/archbox-c-postinstall.sh
+cp ./archbox-b-chroot.sh /mnt/archbox-b-chroot.sh
 echo "[archbox]: Inital setup complete, chroot and execute archbox-chroot.sh to finalize setup. See ya on the flip side..."
