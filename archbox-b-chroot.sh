@@ -30,7 +30,7 @@ echo "[archbox]: Installing packages..."
 pacman -S --noconfirm --needed grub efibootmgr dhcpcd iwd nano vi vim sudo neofetch cmatrix htop ntp zsh git os-prober
 
 echo "[archbox]: Creating main user..."
-useradd -m -b wheel $UACNAME
+useradd -m -g wheel $UACNAME
 yes $UACPW | passwd $UACNAME
 
 echo "[archbox]: Configuring up GRUB..."
